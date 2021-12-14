@@ -1,4 +1,4 @@
-package com.example.interviewapp.Adapter;
+package com.example.interviewapp.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

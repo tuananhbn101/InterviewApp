@@ -1,8 +1,8 @@
-package com.example.interviewapp.Api;
+package com.example.interviewapp.api;
 
 import android.os.AsyncTask;
 
-import com.example.interviewapp.Data.Skill;
+import com.example.interviewapp.data.Skill;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

@@ -1,23 +1,19 @@
-package com.example.interviewapp.Adapter;
+package com.example.interviewapp.adapter;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.interviewapp.Data.Skill;
+import com.example.interviewapp.data.Skill;
 import com.example.interviewapp.R;
 import com.example.interviewapp.databinding.SkillItemBinding;
 
 import java.util.List;
 
 public class SkillRecyclerViewAdapter extends RecyclerView.Adapter<SkillRecyclerViewAdapter.SkillViewHolder> {
-    private List<Skill> mSkillList;
+    private final List<Skill> mSkillList;
 
     public SkillRecyclerViewAdapter(List<Skill> mSkillList) {
         this.mSkillList = mSkillList;
@@ -35,16 +31,9 @@ public class SkillRecyclerViewAdapter extends RecyclerView.Adapter<SkillRecycler
     public void onBindViewHolder(@NonNull SkillViewHolder holder, int position) {
         Skill skill = mSkillList.get(position);
         holder.binding.titleSkillTextview.setText(skill.getType());
-        holder.binding.contentLevelLinearlayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (holder.binding.contentLevelLinearlayout.getVisibility() == View.GONE) {
-                    holder.binding.contentLevelLinearlayout.setVisibility(View.VISIBLE);
-                } else {
-                    holder.binding.contentLevelLinearlayout.setVisibility(View.GONE);
-                }
-            }
-        });
+        holder.binding.juniorContentLevelTextview.setText(skill.getJunior());
+        holder.binding.middleContentLevelTextview.setText(skill.getMiddle());
+        holder.binding.seniorContentLevelTextview.setText(skill.getSenior());
     }
 
     @Override
@@ -53,8 +42,8 @@ public class SkillRecyclerViewAdapter extends RecyclerView.Adapter<SkillRecycler
     }
 
 
-    public class SkillViewHolder extends RecyclerView.ViewHolder {
-        private SkillItemBinding binding;
+    public static class SkillViewHolder extends RecyclerView.ViewHolder {
+        private final SkillItemBinding binding;
 
         public SkillViewHolder(@NonNull SkillItemBinding binding) {
             super(binding.getRoot());
