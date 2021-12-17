@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/title_linearlayout"
+            android:background="@color/color_primary_key"
+            android:layout_width="match_parent"
+            android:layout_height="49dp">
+            <TextView
+                android:gravity="center"
+                android:id="@+id/name_candidate_textview"
+                android:layout_width="0dp"
+                android:textColor="@color/white"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="Ứng viên" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/historyRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/title_linearlayout" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/share_all_float_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="@color/color_primary_key"
+            android:src="@drawable/ic_baseline_share"
+            android:layout_marginBottom="15dp"/>
+    </RelativeLayout>
+</layout>

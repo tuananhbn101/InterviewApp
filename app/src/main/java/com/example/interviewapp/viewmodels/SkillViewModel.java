@@ -7,35 +7,42 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.interviewapp.api.SkillApi;
-import com.example.interviewapp.data.Skill;
+import com.example.interviewapp.data.GroupSkills;
 import com.example.interviewapp.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 public class SkillViewModel extends AndroidViewModel {
 
-    private MutableLiveData<List<Skill>> mListMutableLiveData;
-    private List<Skill> mSkillList;
+    private final MutableLiveData<List<GroupSkills>> mListMutableLiveData;
+    private List<GroupSkills> groupSkills;
 
     public SkillViewModel(@NonNull Application application) {
         super(application);
-        if(mListMutableLiveData==null){
-            mListMutableLiveData = new MutableLiveData<>();
-        }
+        mListMutableLiveData = new MutableLiveData<List<GroupSkills>>();
         SkillApi skillApi = new SkillApi();
         try {
-            mSkillList = skillApi.execute(Utils.getJsonFromAssets(application)).get();
-            mListMutableLiveData.postValue(mSkillList);
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+            groupSkills = skillApi.execute(Utils.getJsonFromAssets(application)).get();
+            mListMutableLiveData.postValue(groupSkills);
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public MutableLiveData<List<Skill>> getListMutableLiveData() {
+    public MutableLiveData<List<GroupSkills>> getListMutableLiveData() {
         return mListMutableLiveData;
     }
-
+    public void searchSkill(String type){
+        List<GroupSkills> searchList = new ArrayList<>();
+        for (GroupSkills groupSkills: groupSkills
+             ) {
+            if(groupSkills.getType().toLowerCase(Locale.ROOT).contains(type.toLowerCase(Locale.ROOT))){
+                searchList.add(groupSkills);
+            }
+        }
+        mListMutableLiveData.postValue(searchList);
+    }
 }

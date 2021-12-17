@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">InterviewApp</string>
+    <string name="skill">Kĩ năng</string>
+    <string name="question">Câu hỏi</string>
+    <string name="score">Điểm</string>
+    <string name="history">Lịch sử</string>
+</resources>

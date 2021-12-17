@@ -5,13 +5,15 @@
         android:orientation="vertical"
         android:layout_height="wrap_content"
         tools:ignore="WebViewLayout">
-        <WebView
-            android:id="@+id/question_web_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/question_textview"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/black"/>
+            android:layout_height="wrap_content"
+            android:background="@color/color_primary_key"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginBottom="1dp"
+            />
     </LinearLayout>
 </layout>

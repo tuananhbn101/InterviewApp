@@ -15,11 +15,13 @@ import java.util.List;
 
 public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRecyclerViewAdapter.QuestionViewHolder> {
     private final List<Question> mQuestionList;
+    private final OnItemClick onItemClick;
 
-
-    public QuestionRecyclerViewAdapter(List<Question> mQuestionList) {
+    public QuestionRecyclerViewAdapter(List<Question> mQuestionList, OnItemClick onItemClick) {
         this.mQuestionList = mQuestionList;
+        this.onItemClick = onItemClick;
     }
+
 
     @NonNull
     @Override
@@ -30,6 +32,8 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
 
     @Override
     public void onBindViewHolder(@NonNull QuestionViewHolder holder, int position) {
+        holder.binding.questionTextview.setText(mQuestionList.get(position).getQuestion());
+        holder.binding.questionTextview.setOnClickListener(v -> onItemClick.showAnswerDialog(mQuestionList.get(position).getQuestion(),mQuestionList.get(position).getAnswer()));
     }
 
     @Override
@@ -37,11 +41,14 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
         return mQuestionList!=null?mQuestionList.size():0;
     }
 
-    public class QuestionViewHolder extends RecyclerView.ViewHolder {
-        private QuestionItemBinding binding;
+    public static class QuestionViewHolder extends RecyclerView.ViewHolder {
+        private final QuestionItemBinding binding;
         public QuestionViewHolder(@NonNull QuestionItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
     }
+     public interface OnItemClick{
+        void showAnswerDialog(String question,String answer);
+     }
 }

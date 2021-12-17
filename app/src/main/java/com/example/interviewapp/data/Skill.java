@@ -1,41 +1,38 @@
 package com.example.interviewapp.data;
 
 public class Skill {
-    private final int id;
-    private final String type;
-    private final String junior;
-    private final String middle;
-    private final String senior;
+    private  String skill;
+    private  Boolean isCheck;
 
-    public Skill(int id, String type, String junior, String middle, String senior) {
-        this.id = id;
-        this.type = type;
-        this.junior = junior;
-        this.middle = middle;
-        this.senior = senior;
+    public void setSkill(String skill) {
+        this.skill = skill;
     }
 
+    public void setCheck(Boolean check) {
+        isCheck = check;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    private  String type;
+
+    public Skill(String skill, Boolean isCheck, String type) {
+        this.skill = skill;
+        this.isCheck = isCheck;
+        this.type = type;
+    }
+
+    public String getSkill() {
+        return skill;
+    }
+
+    public Boolean getCheck() {
+        return isCheck;
+    }
 
     public String getType() {
         return type;
-    }
-
-
-    public String getJunior() {
-        return junior;
-    }
-
-
-    public String getMiddle() {
-        return middle;
-    }
-
-
-    public String getSenior() {
-        return senior;
-    }
-
-    public int getId() {
-        return id;
     }
 }
